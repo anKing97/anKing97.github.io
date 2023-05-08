@@ -82,11 +82,11 @@
             
             <tag> Nacos </tag>
             
-            <tag> RabbitMQ </tag>
-            
             <tag> SpingCloud </tag>
             
             <tag> Gateway </tag>
+            
+            <tag> RabbitMQ </tag>
             
         </tags>
       
