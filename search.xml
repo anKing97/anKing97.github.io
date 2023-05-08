@@ -80,13 +80,13 @@
       
         <tags>
             
+            <tag> RabbitMQ </tag>
+            
             <tag> Nacos </tag>
             
             <tag> SpingCloud </tag>
             
             <tag> Gateway </tag>
-            
-            <tag> RabbitMQ </tag>
             
         </tags>
       
