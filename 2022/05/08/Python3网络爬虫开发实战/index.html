@@ -1,0 +1,357 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python3网络爬虫开发实战 | shallow shadow</title><meta name="author" content="浅羡"><meta name="copyright" content="浅羡"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="第一章：爬虫基础1.1.HTTP基本原理http的请求过程==请求== 主要分为四部分：请求方法、请求的网址、请求头和请求体。==请求体：== 一般承载的内容是 POST 请求中的表单数据，GET 的请求体为空常见的 Content-Type 和 POST 提交数据方式的关系：     Content-Typ POST 提交数据的方式     application/x-www-from-urle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3网络爬虫开发实战">
+<meta property="og:url" content="https://www.zl21.club/2022/05/08/Python3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="shallow shadow">
+<meta property="og:description" content="第一章：爬虫基础1.1.HTTP基本原理http的请求过程==请求== 主要分为四部分：请求方法、请求的网址、请求头和请求体。==请求体：== 一般承载的内容是 POST 请求中的表单数据，GET 的请求体为空常见的 Content-Type 和 POST 提交数据方式的关系：     Content-Typ POST 提交数据的方式     application/x-www-from-urle">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/1416367/pexels-photo-1416367.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2">
+<meta property="article:published_time" content="2022-05-08T08:51:19.000Z">
+<meta property="article:modified_time" content="2023-01-01T15:30:41.000Z">
+<meta property="article:author" content="浅羡">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/1416367/pexels-photo-1416367.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2"><link rel="shortcut icon" href="/img/IronMan.png"><link rel="canonical" href="https://www.zl21.club/2022/05/08/Python3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python3网络爬虫开发实战',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-01 23:30:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="baidu-site-verification" content="codeva-VKYv5KPH3d"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/1416367/pexels-photo-1416367.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2')"><nav id="nav"><span id="blog-info"><a href="/" title="shallow shadow"><span class="site-name">shallow shadow</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python3网络爬虫开发实战</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-08T08:51:19.000Z" title="发表于 2022-05-08 16:51:19">2022-05-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-01T15:30:41.000Z" title="更新于 2023-01-01 23:30:41">2023-01-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/%E7%88%AC%E8%99%AB/">爬虫</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python3网络爬虫开发实战"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('https://images.pexels.com/photos/1416367/pexels-photo-1416367.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2');"></div><article class="post-content" id="article-container"><h1 id="第一章：爬虫基础"><a href="#第一章：爬虫基础" class="headerlink" title="第一章：爬虫基础"></a>第一章：爬虫基础</h1><h2 id="1-1-HTTP基本原理"><a href="#1-1-HTTP基本原理" class="headerlink" title="1.1.HTTP基本原理"></a>1.1.HTTP基本原理</h2><h3 id="http的请求过程"><a href="#http的请求过程" class="headerlink" title="http的请求过程"></a>http的请求过程</h3><p>==请求== 主要分为四部分：请求方法、请求的网址、请求头和请求体。<br>==请求体：== 一般承载的内容是 POST 请求中的表单数据，GET 的请求体为空<br>常见的 Content-Type 和 POST 提交数据方式的关系：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Content-Typ</th>
+<th>POST 提交数据的方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>application/x-www-from-urlencded</td>
+<td>表单数据</td>
+</tr>
+<tr>
+<td>multipart/form-data</td>
+<td>表单文件上传</td>
+</tr>
+<tr>
+<td>application/json</td>
+<td>序列化 JSON 数据</td>
+</tr>
+<tr>
+<td>text/xml</td>
+<td>XML 数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="多进程和多线程"><a href="#多进程和多线程" class="headerlink" title="多进程和多线程"></a>多进程和多线程</h3><p>Python 多线程的用法：<a target="_blank" rel="noopener" href="https://setup.scrape.center/python-threading">https://setup.scrape.center/python-threading</a><br>Python 多进程的用法：<a target="_blank" rel="noopener" href="https://setup.scrape.center/python-multiprocessing">https://setup.scrape.center/python-multiprocessing</a><br>多线程适用场景：如果任务不全是<strong>计算密集型</strong>任务，就可以使用多线程来提高程序整体的执行效率。尤其是对于爬虫这种 <strong>IO密集型</strong> 任务，使用多线程能够大大提高程序整体的爬取效率。</p>
+<p>Python中<strong>GIL</strong>（Global Interpreter Lock,全局解释器锁）的限制导致不论是在单核还是多核条件下,同一时刻都只能运行一个线程这使得Python多线程无法发挥多核并行的优势。从整体来看, Python的多进程比多线程更有优势。所以,如果条件允许的话,尽量用多进程。</p>
+<h2 id="1-2-无状态-HTTP"><a href="#1-2-无状态-HTTP" class="headerlink" title="1.2 无状态 HTTP"></a>1.2 无状态 HTTP</h2><p>用于保持 HTTP 连接状态的技术：Session 和 Cookie，其中 Session 在服务端，用来保存用户的 Session 信息；Cookie 在客户端。</p>
+<ol>
+<li>会话 Cookie：将 Cookie 放在浏览器内存中，关闭浏览器后，Cookie 即失效。</li>
+<li>持久 Cookie：将 Cookie 保存到客户端的硬盘中，下次还可以继续使用，用于长久保存用户的登陆状态。</li>
+</ol>
+<p><img src="image-20230508165248527.png" alt="image-20230508165248527"></p>
+<h2 id="1-3-代理的基本原理"><a href="#1-3-代理的基本原理" class="headerlink" title="1.3 代理的基本原理"></a>1.3 代理的基本原理</h2><p>如果一个 IP 在短时间内大量访问服务，就会被封 IP，即服务器会检测某个 IP 在单位时间内的请求次数，如果请求次数超过设定的阈值，就会直接拒绝提供服务，并返回一些错误信息。</p>
+<h1 id="第2章-基本库的使用"><a href="#第2章-基本库的使用" class="headerlink" title="第2章 基本库的使用"></a>第2章 基本库的使用</h1><h2 id="2-1-urllib-的使用"><a href="#2-1-urllib-的使用" class="headerlink" title="2.1 urllib 的使用"></a>2.1 urllib 的使用</h2><hr>
+<hr>
+<ol>
+<li>常用的 <code>urllib.parse</code> 方法： <code>urlencode</code> 、<code>urlunencode</code>  <code>urlparse</code></li>
+<li>响应码以及相应的查询条件：<strong><em>P54</em></strong><img src="image-20230508165310241.png" alt="image-20230508165310241"></li>
+<li>SSL 证书验证  <code>requests.get(url,verify=False)</code> 即可，但是此时会报一个警告，建议指定证书，可以通过设置忽略警告的方式来屏蔽这个警告：<code>from requests.packages import urllib3  urllib3.disable_warnings()</code>  。或者通过捕获警告日志的方式忽略警告： <code>import logging  logging.captureWarnings(True)</code>   <strong><em>P60</em></strong></li>
+<li>身份认证：  </li>
+</ol>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> requests.auto <span class="keyword">import</span> HTTPBasicAuth</span><br><span class="line">r=requests.get(url,auth=HTTPBasicAuth(<span class="string">'username'</span>,<span class="string">'password'</span>))</span><br><span class="line"><span class="comment"># 或者一种更简单的写法：</span></span><br><span class="line">r=requests.get(url,auth=(<span class="string">'username'</span>,<span class="string">'password'</span>))</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">***代理设置：*** 针对本机设置：</span><br><span class="line">```python</span><br><span class="line">proxies={'https':'http://127.0.0.1:7890'}</span><br><span class="line">r=requests.get(url,proxies=proxies)</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p><strong><em>正则表达式：</em></strong> </p>
+<ul>
+<li><p><code>match(re,content)</code>   从字符串的开头开始匹配。</p>
+  <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result=re.<span class="keyword">match</span>(<span class="string">'^Hello\s\d\d\d\s\d{4}\s\w{10}'</span>,content)  </span><br><span class="line"><span class="built_in">print</span>(result)  </span><br><span class="line"><span class="built_in">print</span>(result.group())  <span class="comment"># 输出匹配到的内容。</span></span><br><span class="line"><span class="built_in">print</span>(result.span())   <span class="comment"># 输出匹配的范围。</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>  <strong>贪婪匹配：</strong> <code>.*</code>   <strong>非贪婪匹配：</strong> <code>.*?</code>  在做匹配的时候，字符串中间尽量使用非贪婪匹配，以免出现匹配结果缺失的情况；如果匹配的结果在字符串结尾，非贪婪匹配有可能匹配不到任何内容，因为它会匹配尽可能少的字符。<br>  <strong>修饰符：</strong> <code>re.S</code> 使匹配内容包括换行符在内的所有字符。</p>
+<p>  <img src="Pasted%20image%2020221102151427.png" alt=""></p>
+<ul>
+<li><code>search(re,content)</code> 匹配时扫描整个字符串，返回 <strong>第一个</strong> 匹配成的结果。</li>
+<li><code>findall(re,content)</code>  对应于 search ，返回全部匹配到的字符串。</li>
+<li><code>sub(re,replaceCha,content)</code> 修改文本，比如去除文本中的数字。<code>content=re.sub('\d+','',content)</code></li>
+<li><code>compile(re)</code> 将正则字符串编译为正则表达式，目前感觉没啥用。</li>
+</ul>
+<hr>
+<p>  <strong><em>httpx ：</em></strong> 用于访问那些使用 <strong>HTTP/2.0</strong> 的网站，而 <code>urllib</code> 和 <code>requests</code> 仅支持 <strong>HTTP/1.1</strong> 。  </p>
+<ul>
+<li>使用代理：<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    proxies={</span><br><span class="line">    		 <span class="string">'https://'</span>:<span class="string">'http://127.0.0.1:7890'</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">+ httpx 默认使用的是 **HTTP/<span class="number">1.1</span>** ，**HTTP/<span class="number">2.0</span>** 需要开启，通常与上下文管理器结合使用</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line"><span class="keyword">import</span> httpx</span><br><span class="line">client=httpx.Client(http2=<span class="literal">True</span>)</span><br><span class="line">response=client.get(url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上下文管理器</span></span><br><span class="line"><span class="keyword">with</span> httpx.Client(http2=<span class="literal">True</span>,proxies=proxies) <span class="keyword">as</span> client:</span><br><span class="line">	response=client.get(url)</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>其中，<code>httpx.Client</code> 相当于 <code>requests.Session</code>  此外 httpx 还支持一部请求。</p>
+<hr>
+<h1 id="第三章-解析库"><a href="#第三章-解析库" class="headerlink" title="第三章 解析库"></a>第三章 解析库</h1><p><strong><em>XPath:</em></strong> XML路径语言</p>
+<ul>
+<li>常用规则：<img src="image-20230508165702696.png" alt="image-20230508165702696"></li>
+<li><strong>属性多值匹配</strong>， <code>contains</code> 当属性中有多个值时：<code>contains(属性名称，属性值)</code> </li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">text=<span class="string">'''&lt;li class="li li-first"&gt;&lt;a href="link.html"&gt;first item&lt;/a&gt;&lt;/li&gt;'''</span></span><br><span class="line">html=etree.parse(text,etrcc.HTMLparser())</span><br><span class="line">result = html.xpath(<span class="string">'//li[contains(@class "li")]/a/text()'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><strong>多属性匹配</strong>，用多个属性确定一个点，运算符之间用 <code>and</code> 连接</li>
+</ul>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"li li-first"</span> <span class="attr">name</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"link.html"</span>&gt;</span>first item<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">result=html.xpath('//li[contains(@class "li") and @name="item"]/a/text()')</span><br></pre></td></tr></tbody></table></figure>
+<p>除了 <code>and</code> 之外，XPath 还有其他的运算符：<img src="image-20230508165838714.png" alt="image-20230508165838714"></p>
+<ul>
+<li><strong>按序选择：</strong> 往中括号中传入值来选取</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result=html.xpath(<span class="string">'//li[1]/a/text()'</span>) // 选取第一个节点</span><br><span class="line">result=html.xpath(<span class="string">'//li[last()]/a/text()'</span>) // 最后一个</span><br><span class="line">result=html.xpath(<span class="string">'//li[position()&lt;3]/a/text()'</span>) //前两个</span><br><span class="line">result=html.xpath(<span class="string">'//li[last()-2]/a/text()'</span>) //倒数第三个</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p><strong><em>Beautiful Soup:</em></strong></p>
+<ul>
+<li><p><code>beautufil soup</code> 依赖解析器,通常有 <code>html.parser</code>    <code>lxml</code>    <code>xml</code>   <code>html5lib</code>  这四种, 不过比较推荐使用 <strong><em>lxml</em></strong> <img src="image-20230508165854714.png" alt="image-20230508165854714"></p>
+</li>
+<li><p><code>soup.prettify()</code> 把要解析的字符串以标准的缩进格式输出.</p>
+</li>
+<li>选择器输出的都是<code>bs4.element.Tag</code>类型,可以进行嵌套选择 </li>
+<li><strong>关联选择:</strong> <ul>
+<li><code>children</code> 或者 <code>contents</code> 选择所有的子节点  contents 返回列表 children 返回生成器</li>
+<li><code>descendants</code> 选择所有的子孙节点   返回类型为 生成器类型</li>
+<li><code>parent</code> 选择节点的父节点(仅获取直接父节点,不包含其他父节点)</li>
+<li><code>parents</code> 获取当前节点的所有父节点  返回生成器</li>
+<li><code>next_sibling</code> 和 <code>previous_sibling</code> 获取下一个和上一个兄弟节点</li>
+<li><code>next_siblings</code> 和 <code>previous_siblings</code> 获取后面和前面所有的兄弟节点</li>
+</ul>
+</li>
+<li><strong>方法选择器:</strong> <ul>
+<li><code>find_all(name,attrs,recursive,text,**kwargs)</code> <ul>
+<li><code>name</code>  找出所有 ul 标签 <code>soup.find_all(name='ul')</code>   返回结果是列表类型,其中的每个元素依然是 <code>bs4.element.Tag</code> 类型.</li>
+<li><code>attrs</code> 根据属性查询: <code>soup.find_all(attrs={'id':'list-1'})</code>  返回结果为列表. 也可以直接用 <code>soup.find_all(id='list-1')</code>  <code>soup.find_all(class_='element')</code></li>
+<li><code>text</code> 用来匹配节点的文本, </li>
+</ul>
+</li>
+<li><code>find</code> 同 <code>find_all</code> 不过进返回第一个匹配到的元素.</li>
+<li>其他的方法:  <img src="image-20230508165915758.png" alt="image-20230508165915758"></li>
+</ul>
+</li>
+<li><strong>CSS选择器:</strong> 调用 <code>select</code> 方法,传入相应的 CSS选择器即可. <code>soup.select('ul li')</code></li>
+</ul>
+<hr>
+<hr>
+<p><strong><em>pyquery:</em></strong> 功能强大的 CSS 选择器</p>
+<ul>
+<li><strong>查找节点:</strong> <ul>
+<li><code>find</code>  查找所有的子孙节点</li>
+<li><code>children</code> 只查找子节点</li>
+<li><code>parent</code> 查找直接父节点 <code>parents</code> 查找所有祖先节点</li>
+<li><code>siblings</code> 查找所有兄弟节点  <code>l.siblings('.active')</code></li>
+</ul>
+</li>
+<li><strong>获取信息</strong><ul>
+<li><code>attr</code> 获取属性值</li>
+<li><code>text</code> 获取内部文本</li>
+<li><code>html</code> 获取节点内部的 HTML 文本</li>
+</ul>
+</li>
+<li><strong>节点操作:</strong><ul>
+<li><code>addClass</code> <code>removeClass</code> 添加或者删除一个 class <code>li.addClass('active')</code> </li>
+<li><code>attr</code> <code>text</code> <code>html</code> 对属性进行操作</li>
+</ul>
+</li>
+</ul>
+<h1 id="第四章-数据的存储"><a href="#第四章-数据的存储" class="headerlink" title="第四章 数据的存储"></a>第四章 数据的存储</h1><hr>
+<p><strong><em>MySQL存储：</em></strong><br>标准的写入格式：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">db = pymysql.connect(host=<span class="string">'121.4.79.246'</span>,user=<span class="string">'root'</span>,password=<span class="string">'Shadow99!'</span>,port=<span class="number">3306</span>,db=<span class="string">'db_python'</span>)  </span><br><span class="line">data={  </span><br><span class="line">    <span class="string">'id'</span>:<span class="string">'2021214094'</span>,  </span><br><span class="line">    <span class="string">'name'</span>:<span class="string">'张伟'</span>,  </span><br><span class="line">    <span class="string">'age'</span>:<span class="number">20</span>  </span><br><span class="line">}  </span><br><span class="line">table=<span class="string">'student'</span>  </span><br><span class="line">keys = <span class="string">','</span>.join(data.keys())  </span><br><span class="line">values=<span class="string">','</span>.join([<span class="string">'%s'</span>]*<span class="built_in">len</span>(data))  </span><br><span class="line">sql = <span class="string">'INSERT INTO {table}({keys}) VALUES ({values})'</span>.<span class="built_in">format</span>(table=table,keys=keys,values=values)  </span><br><span class="line"></span><br><span class="line">cursor = db.cursor()  </span><br><span class="line"><span class="keyword">try</span>:  </span><br><span class="line">    <span class="keyword">if</span>(cursor.execute(sql,<span class="built_in">tuple</span>(data.values()))):  </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'Successful'</span>)  </span><br><span class="line">        db.commit()  </span><br><span class="line"><span class="keyword">except</span>:  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Failed'</span>)  </span><br><span class="line">    db.rollback()  </span><br><span class="line">db.close()</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>标准的更新格式：</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">db = pymysql.connect(host=<span class="string">'121.4.79.246'</span>,user=<span class="string">'root'</span>,password=<span class="string">'Shadow99!'</span>,port=<span class="number">3306</span>,db=<span class="string">'db_python'</span>)  </span><br><span class="line"><span class="comment"># 标准的更新数据方法  </span></span><br><span class="line">data={  </span><br><span class="line">    <span class="string">'id'</span>:<span class="string">'2021214094'</span>,  </span><br><span class="line">    <span class="string">'name'</span>:<span class="string">'张伟'</span>,  </span><br><span class="line">    <span class="string">'age'</span>:<span class="number">24</span>  </span><br><span class="line">}  </span><br><span class="line">table=<span class="string">'student'</span>  </span><br><span class="line">keys=<span class="string">','</span>.join(data.keys())  </span><br><span class="line">values=<span class="string">','</span>.join([<span class="string">'%s'</span>]*<span class="built_in">len</span>(data))  </span><br><span class="line">  </span><br><span class="line">cursor=db.cursor()  </span><br><span class="line">sql = <span class="string">'INSERT INTO {table}({keys}) values({values}) ON DUPLICATE KEY UPDATE '</span>.<span class="built_in">format</span>(table=table,keys=keys,values=values)  </span><br><span class="line">update=<span class="string">','</span>.join([<span class="string">"{key}=%s"</span>.<span class="built_in">format</span>(key=key) <span class="keyword">for</span> key <span class="keyword">in</span> data])  </span><br><span class="line">sql += update  </span><br><span class="line"><span class="keyword">try</span>:  </span><br><span class="line">    <span class="keyword">if</span> cursor.execute(sql,<span class="built_in">tuple</span>(data.values())*<span class="number">2</span>):  </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'Successful'</span>)  </span><br><span class="line">        db.commit()  </span><br><span class="line"><span class="keyword">except</span>:  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Failed'</span>)  </span><br><span class="line">    db.rollback()  </span><br><span class="line">db.close()</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<hr>
+<p><strong><em>MongoDB:</em></strong><br>比较符号：<img src="image-20230508170029989.png" alt="image-20230508170029989"></p>
+<p>适用写法： <code>collection.find({'age':{'$gt':20}})</code> </p>
+<p>或者正则匹配查询：<img src="image-20230508170039776.png" alt="image-20230508170039776"></p>
+<p>操作方法：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line">client = pymongo.MongoClient(host=<span class="string">'localhost'</span>,port=<span class="number">27017</span>)</span><br><span class="line">db=client.test <span class="comment"># 指定数据库</span></span><br><span class="line">collection=db.student  <span class="comment"># 指定集合</span></span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p><strong><em>Redis缓存存储：</em></strong>  $P_{151}$<br>本机设置的密码为： <code>Shadow99!</code><br>连接 Redis</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> redis <span class="keyword">import</span> StrictRedis</span><br><span class="line">redis=StrictRedis(host=<span class="string">'localhost'</span>,port=<span class="number">6379</span>,db=<span class="number">0</span>,password=<span class="string">'Shadow99!'</span>)</span><br><span class="line">reids.<span class="built_in">set</span>(<span class="string">'name'</span>,<span class="string">'Bob'</span>)</span><br><span class="line"><span class="built_in">print</span>(redis.get(<span class="string">'name'</span>))</span><br></pre></td></tr></tbody></table></figure>
+<p>主要就是熟悉各种操作：键操作、字符串操作、列表操作、集合操作、有序集合操作、散列操作。</p>
+<hr>
+<p><strong><em>Elasticsearch搜索引擎存储：</em></strong> $P_{159}$<br>Elasticsearch 和传统关系型数据库的对比：<img src="image-20230508170100208.png" alt="image-20230508170100208"></p>
+<p>没装好。。。。运行不通。。后面再试吧</p>
+<hr>
+<p><strong><em>RabbitMQ的使用：</em></strong> $P_{166}$<br>在爬取数据的过程中，实现进程之间的通信。 它是一个开源的消息队列系统。</p>
+<hr>
+<p><strong><em>异步爬虫：</em></strong><br><code>asyncio</code> 结合 <code>aiohttp</code> 实现异步爬虫：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 aiohttp 结合 asyncio 实现异步  </span></span><br><span class="line"><span class="keyword">import</span> asyncio  </span><br><span class="line"><span class="keyword">import</span> aiohttp  </span><br><span class="line"><span class="keyword">import</span> time  </span><br><span class="line">  </span><br><span class="line">start_time=time.time()  </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">url</span>):  </span><br><span class="line">    session = aiohttp.ClientSession()  </span><br><span class="line">    response = <span class="keyword">await</span> session.get(url)  </span><br><span class="line">    <span class="keyword">await</span> response.text()  </span><br><span class="line">    <span class="keyword">await</span> session.close()  </span><br><span class="line">    <span class="keyword">return</span> response  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">request</span>():  </span><br><span class="line">    url=<span class="string">'https://www.httpbin.org/delay/5'</span>  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Waiting for '</span>,url)  </span><br><span class="line">    response=<span class="keyword">await</span> get(url)  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Get response from'</span>,url,<span class="string">'response '</span>,response)  </span><br><span class="line">  </span><br><span class="line">tasks = [asyncio.ensure_future(request()) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]  </span><br><span class="line">loop = asyncio.get_event_loop()  </span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))  </span><br><span class="line">  </span><br><span class="line">end_time=time.time()  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">'Cost time:'</span>,end_time-start_time)</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>并发限制：</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 并发限制  </span></span><br><span class="line"><span class="keyword">import</span> asyncio  </span><br><span class="line"><span class="keyword">import</span> aiohttp  </span><br><span class="line">  </span><br><span class="line">CONCURRENCY = <span class="number">5</span>  </span><br><span class="line">URL=<span class="string">'https://www.baidu.com'</span>  </span><br><span class="line">  </span><br><span class="line">semaphone = asyncio.Semaphore(CONCURRENCY)  </span><br><span class="line">session=<span class="literal">None</span>  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">scrape_api</span>():  </span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> semaphone:  </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Scraping "</span>,URL)  </span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(URL) <span class="keyword">as</span> response:  </span><br><span class="line">            <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">await</span> response.text()  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():  </span><br><span class="line">    <span class="keyword">global</span> session  </span><br><span class="line">    session=aiohttp.ClientSession()  </span><br><span class="line">    scrape_index_tasks = [asyncio.ensure_future(scrape_api()) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>)]  </span><br><span class="line">    <span class="keyword">await</span> asyncio.gather(*scrape_index_tasks)  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:  </span><br><span class="line">    asyncio.get_event_loop().run_until_complete(main())</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<h2 id="第7章-自动化软件"><a href="#第7章-自动化软件" class="headerlink" title="第7章 自动化软件"></a>第7章 自动化软件</h2><p><strong><em>Selenium:</em></strong><br>当使用 <code>wait.until(EC.***)</code>时的判断条件<img src="image-20230508170125607.png" alt="image-20230508170125607"></p>
+<p>如 <code>wait.until(EC.title_is())</code></p>
+<hr>
+<p><strong><em>Splash：</em></strong></p>
+<ol>
+<li><strong>Splash Lua 脚本：</strong><br> <a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-tutorial.html">Lua 教程 | 菜鸟教程</a>  </li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.zl21.club">浅羡</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.zl21.club/2022/05/08/Python3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">https://www.zl21.club/2022/05/08/Python3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.zl21.club" target="_blank">shallow shadow</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/1416367/pexels-photo-1416367.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/10/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%88PyTorch%E6%A1%86%E6%9E%B6%EF%BC%89/" title="动手学深度学习（PyTorch框架）"><img class="cover" src="https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">动手学深度学习（PyTorch框架）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/08/PyTorch%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E3%80%81%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E3%80%81%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/" title="PyTorch网络结构、训练过程、可视化工具汇总"><img class="cover" src="https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-08</div><div class="title">PyTorch网络结构、训练过程、可视化工具汇总</div></div></a></div><div><a href="/2022/11/20/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" title="Python数据分析"><img class="cover" src="https://images.pexels.com/photos/891030/pexels-photo-891030.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-20</div><div class="title">Python数据分析</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">浅羡</div><div class="author-info__description">蜉蝣之光，照我征途</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/anKing97"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/anKing97" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:anking20220315@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎相互交流学习</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">第一章：爬虫基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-HTTP%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1.1.HTTP基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E7%9A%84%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">http的请求过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">多进程和多线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%97%A0%E7%8A%B6%E6%80%81-HTTP"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 无状态 HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E4%BB%A3%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 代理的基本原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">第2章 基本库的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-urllib-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 urllib 的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%A7%A3%E6%9E%90%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">第三章 解析库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">4.</span> <span class="toc-text">第四章 数据的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC7%E7%AB%A0-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BD%AF%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">第7章 自动化软件</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/12/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5/" title="Ubuntu系统实践"><img src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu系统实践"></a><div class="content"><a class="title" href="/2023/02/12/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5/" title="Ubuntu系统实践">Ubuntu系统实践</a><time datetime="2023-02-12T10:19:33.000Z" title="发表于 2023-02-12 18:19:33">2023-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/10/Nas%E5%AE%9E%E8%B7%B5/" title="Nas实践"><img src="https://images.pexels.com/photos/327509/pexels-photo-327509.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nas实践"></a><div class="content"><a class="title" href="/2023/02/10/Nas%E5%AE%9E%E8%B7%B5/" title="Nas实践">Nas实践</a><time datetime="2023-02-10T10:14:18.000Z" title="发表于 2023-02-10 18:14:18">2023-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/13/WSL%E5%AE%9E%E8%B7%B5/" title="WSL实践"><img src="https://images.pexels.com/photos/2915997/pexels-photo-2915997.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WSL实践"></a><div class="content"><a class="title" href="/2023/01/13/WSL%E5%AE%9E%E8%B7%B5/" title="WSL实践">WSL实践</a><time datetime="2023-01-13T10:27:00.000Z" title="发表于 2023-01-13 18:27:00">2023-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/07/Vue3%E6%80%BB%E7%BB%93/" title="Vue3总结"><img src="https://images.pexels.com/photos/813871/pexels-photo-813871.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3总结"></a><div class="content"><a class="title" href="/2023/01/07/Vue3%E6%80%BB%E7%BB%93/" title="Vue3总结">Vue3总结</a><time datetime="2023-01-07T10:31:51.000Z" title="发表于 2023-01-07 18:31:51">2023-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/21/SpringCloud%E5%90%8E%E7%AB%AF%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4/" title="SpringCloud后端搭建步骤"><img src="https://images.pexels.com/photos/1037992/pexels-photo-1037992.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud后端搭建步骤"></a><div class="content"><a class="title" href="/2022/12/21/SpringCloud%E5%90%8E%E7%AB%AF%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4/" title="SpringCloud后端搭建步骤">SpringCloud后端搭建步骤</a><time datetime="2022-12-21T15:30:41.000Z" title="发表于 2022-12-21 23:30:41">2022-12-21</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2021 - 2023 By 浅羡</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
