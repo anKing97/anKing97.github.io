@@ -165,7 +165,7 @@
     })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="baidu-site-verification" content="codeva-VKYv5KPH3d"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2')"><nav id="nav"><span id="blog-info"><a href="/" title="Shallow Shadow"><span class="site-name">Shallow Shadow</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">动手学深度学习（PyTorch框架）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-10-08T10:46:38.000Z" title="Created 2022-10-08 18:46:38">2022-10-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-05-08T11:01:58.891Z" title="Updated 2023-05-08 19:01:58">2023-05-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">6.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>22min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="动手学深度学习（PyTorch框架）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2');"></div><article class="post-content" id="article-container"><h1 id="阅读指南："><a href="#阅读指南：" class="headerlink" title="阅读指南："></a>阅读指南：</h1><p>• 第一部分（第1章至第3章）涵盖预备工作和基础知识。第1章介绍深度学习的背景。第2章提供动手学深度学习所需要的预备知识。第3章包括深度学习最基础的概念和技术，如多层感知机和模型正则化。如果读者时间有限，并且只想了解深度学习最基础的概念和技术，那么只需阅读第一部分。</p>
 <p>• 第二部分（第4章至第6章）关注现代深度学习技术。第4章描述深度学习计算的各个重要组成部分，并为实现后续更复杂的模型打下基础。第5章解释近年来令深度学习在计算机视觉领域大获成功的卷积神经网络。第6章阐述近年来常用于处理序列数据的循环神经网络。阅读第二部分有助于掌握现代深度学习技术。</p>
 <p>• 第三部分（第7章至第10章）讨论计算性能和应用。第7章评价各种用来训练深度学习模型的优化算法。第8章检验影响深度学习计算性能的几个重要因素。第9章和第10章分别列举深度学习在计算机视觉和自然语言处理中的重要应用。这部分内容读者可根据兴趣选择阅读。</p>
-<p><img src="/.club//image-20230508184808366.png" alt="image-20230508184808366"></p>
+<p><img src="image-20230508184808366.png" alt="image-20230508184808366"></p>
 <p>上图中由甲章指向乙章的箭头表明甲章的知识有助于理解乙章的内容。如果读者想短时间了解深度学习最基础的概念和技术，只需阅读第1章至第3章；如果读者希望掌握现代深度学习技术，还需阅读第4章至第6章。第7章至第10章读者可以根据兴趣选择阅读。</p>
 <h1 id="深度学习简介"><a href="#深度学习简介" class="headerlink" title="深度学习简介"></a>深度学习简介</h1><p>逆向思考，与其涉及一个解决问题的程序，不如从嘴中的需求入手来找寻一个解决方案。即不用去想如何解决问题，而是以人的观点去输入一些数据，让计算机学习。</p>
 <p>通俗来说，机器学习是一门讨论各式各样的适用于不同问题的函数形式，以及如何使用数据来有效地获取函数参数具体值的学科。深度学习是指机器学习中的一类函数，它们的形式通常为多层神经网络。</p>
@@ -176,7 +176,7 @@
 <li>调整参数，使模型在这些样本中表现得更好。</li>
 <li>重复第2步和第3步，直到模型在任务中的表现令人满意。</li>
 </ol>
-<p><img src="/.club//image-20230508184821041.png" alt="image-20230508184821041"></p>
+<p><img src="image-20230508184821041.png" alt="image-20230508184821041"></p>
 <h2 id="1-2-关键组件"><a href="#1-2-关键组件" class="headerlink" title="1.2. 关键组件"></a>1.2. 关键组件</h2><ol>
 <li>我们可以学习的 <strong><em>数据</em>（data）</strong></li>
 <li>如何转换数据的 <strong><em>模型</em>（model）</strong></li>
@@ -286,12 +286,12 @@
 <h3 id="3-1-2-矢量化加速"><a href="#3-1-2-矢量化加速" class="headerlink" title="3.1.2.矢量化加速"></a>3.1.2.矢量化加速</h3><p>同时处理整个小批量的样本。不用按元素级运算，直接对两个向量变量名进行加减等运算操作。</p>
 <h3 id="3-1-3-正态分布与平方损失"><a href="#3-1-3-正态分布与平方损失" class="headerlink" title="3.1.3.正态分布与平方损失"></a>3.1.3.正态分布与平方损失</h3><p>正态分布：也称为 高斯分布。 简单说：若随机变量 $x$ 具有均值 $\mu$ 和方差 $\sigma^2$ （标准差为 $\sigma$），其正态分布概率密度函数如下：$p(x)=\frac{1}{\sqrt{2\pi \sigma ^2} } (-\frac{1}{2\sigma ^2} (x-\mu )^2)$</p>
 <h3 id="3-1-4-从线性回归到深度网络"><a href="#3-1-4-从线性回归到深度网络" class="headerlink" title="3.1.4.从线性回归到深度网络"></a>3.1.4.从线性回归到深度网络</h3><ol>
-<li><strong><em>神经网络图</em></strong>：<img src="/.club//image-20230508184843519.png" alt="image-20230508184843519"></li>
+<li><strong><em>神经网络图</em></strong>：<img src="image-20230508184843519.png" alt="image-20230508184843519"></li>
 </ol>
 <p>通常会忽略网络的输入层，因此，这个模型为单层神经网络。</p>
 <p>对于线性回归，每个输入都与每个输出相连，我们将这种变换称为 <strong><em>全连接层</em></strong> 或 <strong><em>稠密层</em></strong>。</p>
 <h2 id="3-2-线性回归的从零开始实现"><a href="#3-2-线性回归的从零开始实现" class="headerlink" title="3.2.线性回归的从零开始实现"></a>3.2.线性回归的从零开始实现</h2><h2 id="3-3-线性回归的简洁实现"><a href="#3-3-线性回归的简洁实现" class="headerlink" title="3.3.线性回归的简洁实现"></a>3.3.线性回归的简洁实现</h2><h2 id="3-4-softmax回归"><a href="#3-4-softmax回归" class="headerlink" title="3.4.softmax回归"></a>3.4.softmax回归</h2><h3 id="3-4-1-分类问题"><a href="#3-4-1-分类问题" class="headerlink" title="3.4.1.分类问题"></a>3.4.1.分类问题</h3><p><strong><em>独热编码</em></strong>： 表示分类数据的简单方法，它是一个向量，分量和类别一样多，类别对应的分量设置为1，其他所有分量设置为0。</p>
-<h3 id="3-4-2-网络架构"><a href="#3-4-2-网络架构" class="headerlink" title="3.4.2.网络架构"></a>3.4.2.网络架构</h3><p><img src="/.club//image-20230508184909710.png" alt="image-20230508184909710"></p>
+<h3 id="3-4-2-网络架构"><a href="#3-4-2-网络架构" class="headerlink" title="3.4.2.网络架构"></a>3.4.2.网络架构</h3><p><img src="image-20230508184909710.png" alt="image-20230508184909710"></p>
 <p>与线性回归一样，softmax回归也是一个单层神经网络。并且其输出也是全连接层。</p>
 <h3 id="3-4-3-全连接层的参数开销"><a href="#3-4-3-全连接层的参数开销" class="headerlink" title="3.4.3.全连接层的参数开销"></a>3.4.3.全连接层的参数开销</h3><p>对于任何具有 $d$ 个输入和 $q$ 个输出的全连接层，参数开销为： $\Theta(dq)$ ，可以减小成本：将$d$ 个输入转换为 $q$ 个输出的成本可以减少到 $\Theta(\frac{dq}{n} )$。</p>
 <h3 id="3-4-4-softmax运算"><a href="#3-4-4-softmax运算" class="headerlink" title="3.4.4.softmax运算"></a>3.4.4.softmax运算</h3><p>需要一个训练目标，来鼓励模型精准地估计概率。在分类器输出0.5的所有样本中，希望这些样本有一半shi’jia</p>
@@ -333,7 +333,7 @@
 </li>
 <li><p><strong><em>在网络中加入隐藏层</em></strong>：</p>
 <p> 可以在输入与输出之间加入一个或几个隐藏层：将许多全连接层堆叠在一起。每一层都输出到上面的层，直到生成最后的输出。</p>
-<p> <strong><em>多层感知机</em></strong>： 将前 $L-1$ 层看作表示，把最后一层看作线性预测器。<img src="/.club//image-20230508184926274.png" alt="image-20230508184926274"></p>
+<p> <strong><em>多层感知机</em></strong>： 将前 $L-1$ 层看作表示，把最后一层看作线性预测器。<img src="image-20230508184926274.png" alt="image-20230508184926274"></p>
 <p> 这个多层感知机有4个输入，3个输出，其隐藏层包含了5个隐藏单元。其层数为2层，且都是全连接层。</p>
 </li>
 <li><p><strong><em>从线性到非线性</em></strong>：</p>
@@ -427,7 +427,7 @@
 <li>卷积编码器：由两个卷积层组成</li>
 <li>全连接层密集块：由三个全连接层组成。</li>
 </ul>
-<p><img src="/.club//image-20230508185050913.png" alt="image-20230508185050913"></p>
+<p><img src="image-20230508185050913.png" alt="image-20230508185050913"></p>
 <p>每个卷积快中的基本单元是一个卷积层、一个sigmoid激活函数和平均汇聚层。</p>
 <h1 id="第8章：循环神经网络"><a href="#第8章：循环神经网络" class="headerlink" title="第8章：循环神经网络"></a>第8章：循环神经网络</h1><h2 id="8-1-序列模型"><a href="#8-1-序列模型" class="headerlink" title="8.1.序列模型"></a>8.1.序列模型</h2><h3 id="8-1-1-统计工具"><a href="#8-1-1-统计工具" class="headerlink" title="8.1.1.统计工具"></a>8.1.1.统计工具</h3><ol>
 <li><strong><em>自回归模型</em></strong>：<ol>

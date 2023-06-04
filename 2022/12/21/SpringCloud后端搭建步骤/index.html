@@ -222,9 +222,9 @@
 <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">userservice:</span></span><br><span class="line">  <span class="attr">ribbon:</span></span><br><span class="line">    <span class="attr">NFLoadBalancerRuleClassName:</span> <span class="string">com.alibaba.cloud.nacos.ribbon.NacosRule</span> <span class="comment"># 负载均衡规则 </span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="4）-权重配置"><a href="#4）-权重配置" class="headerlink" title="4）*权重配置"></a>4）*权重配置</h3><p>如果同一微服务有多个实例，可以根据实例所在服务器的硬件信息设置不同的权重，充分发挥服务器的性能。或者当需要对微服务进行升级时，可以先将一个微服务的权重设置为0，然后对其升级，之后再慢慢调大权重，达到微服务版本的平滑过渡。</p>
 <p>在控制台中修改权重，找到要修改的微服务实力列表，点击编辑：</p>
-<p><img src="/.club//image-20230507233951897.png" alt="image-20230507233951897"></p>
+<p><img src="image-20230507233951897.png" alt="image-20230507233951897"></p>
 <p>在弹出的编辑窗口中修改权重：</p>
-<p><img src="/.club//image-20230507234105839.png" alt="image-20230507234105839"></p>
+<p><img src="image-20230507234105839.png" alt="image-20230507234105839"></p>
 <blockquote>
 <p>注意：如果权重修改为0，则该实例永远不会被访问</p>
 </blockquote>
@@ -243,7 +243,7 @@
 <ol>
 <li>在 <code>feign-api</code> 中写入 client 和 pojo 信息。项目结构如下：</li>
 </ol>
-<p><img src="/.club//image-20230507234134811.png" alt="image-20230507234134811"></p>
+<p><img src="image-20230507234134811.png" alt="image-20230507234134811"></p>
 <p>其中 <code>UserClient.java</code> 文件为</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = "userservice")</span> <span class="comment">// 指定需要连接的服务名</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserClient</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping("/user/{id}")</span>  <span class="comment">// 获取user 信息</span></span><br><span class="line">    User <span class="title function_">findById</span><span class="params">(<span class="meta">@PathVariable("id")</span> Long id)</span>; <span class="comment">// 指定参数</span></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p><code>User.java</code> 为</p>

@@ -199,13 +199,13 @@
 <li>会话 Cookie：将 Cookie 放在浏览器内存中，关闭浏览器后，Cookie 即失效。</li>
 <li>持久 Cookie：将 Cookie 保存到客户端的硬盘中，下次还可以继续使用，用于长久保存用户的登陆状态。</li>
 </ol>
-<p><img src="/.club//image-20230508165248527.png" alt="image-20230508165248527"></p>
+<p><img src="image-20230508165248527.png" alt="image-20230508165248527"></p>
 <h2 id="1-3-代理的基本原理"><a href="#1-3-代理的基本原理" class="headerlink" title="1.3 代理的基本原理"></a>1.3 代理的基本原理</h2><p>如果一个 IP 在短时间内大量访问服务，就会被封 IP，即服务器会检测某个 IP 在单位时间内的请求次数，如果请求次数超过设定的阈值，就会直接拒绝提供服务，并返回一些错误信息。</p>
 <h1 id="第2章-基本库的使用"><a href="#第2章-基本库的使用" class="headerlink" title="第2章 基本库的使用"></a>第2章 基本库的使用</h1><h2 id="2-1-urllib-的使用"><a href="#2-1-urllib-的使用" class="headerlink" title="2.1 urllib 的使用"></a>2.1 urllib 的使用</h2><hr>
 <hr>
 <ol>
 <li>常用的 <code>urllib.parse</code> 方法： <code>urlencode</code> 、<code>urlunencode</code>  <code>urlparse</code></li>
-<li>响应码以及相应的查询条件：<strong><em>P54</em></strong><img src="/.club//image-20230508165310241.png" alt="image-20230508165310241"></li>
+<li>响应码以及相应的查询条件：<strong><em>P54</em></strong><img src="image-20230508165310241.png" alt="image-20230508165310241"></li>
 <li>SSL 证书验证  <code>requests.get(url,verify=False)</code> 即可，但是此时会报一个警告，建议指定证书，可以通过设置忽略警告的方式来屏蔽这个警告：<code>from requests.packages import urllib3  urllib3.disable_warnings()</code>  。或者通过捕获警告日志的方式忽略警告： <code>import logging  logging.captureWarnings(True)</code>   <strong><em>P60</em></strong></li>
 <li>身份认证：  </li>
 </ol>
@@ -217,7 +217,7 @@
 <li><p><code>match(re,content)</code>   从字符串的开头开始匹配。</p>
   <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result=re.<span class="keyword">match</span>(<span class="string">'^Hello\s\d\d\d\s\d{4}\s\w{10}'</span>,content)  </span><br><span class="line"><span class="built_in">print</span>(result)  </span><br><span class="line"><span class="built_in">print</span>(result.group())  <span class="comment"># 输出匹配到的内容。</span></span><br><span class="line"><span class="built_in">print</span>(result.span())   <span class="comment"># 输出匹配的范围。</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>  <strong>贪婪匹配：</strong> <code>.*</code>   <strong>非贪婪匹配：</strong> <code>.*?</code>  在做匹配的时候，字符串中间尽量使用非贪婪匹配，以免出现匹配结果缺失的情况；如果匹配的结果在字符串结尾，非贪婪匹配有可能匹配不到任何内容，因为它会匹配尽可能少的字符。<br>  <strong>修饰符：</strong> <code>re.S</code> 使匹配内容包括换行符在内的所有字符。</p>
-<p>  <img src="/.club//Pasted%20image%2020221102151427.png" alt=""></p>
+<p>  <img src="Pasted%20image%2020221102151427.png" alt=""></p>
 <ul>
 <li><code>search(re,content)</code> 匹配时扫描整个字符串，返回 <strong>第一个</strong> 匹配成的结果。</li>
 <li><code>findall(re,content)</code>  对应于 search ，返回全部匹配到的字符串。</li>
@@ -236,7 +236,7 @@
 <hr>
 <h1 id="第三章-解析库"><a href="#第三章-解析库" class="headerlink" title="第三章 解析库"></a>第三章 解析库</h1><p><strong><em>XPath:</em></strong> XML路径语言</p>
 <ul>
-<li>常用规则：<img src="/.club//image-20230508165702696.png" alt="image-20230508165702696"></li>
+<li>常用规则：<img src="image-20230508165702696.png" alt="image-20230508165702696"></li>
 <li><strong>属性多值匹配</strong>， <code>contains</code> 当属性中有多个值时：<code>contains(属性名称，属性值)</code> </li>
 </ul>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">text=<span class="string">'''&lt;li class="li li-first"&gt;&lt;a href="link.html"&gt;first item&lt;/a&gt;&lt;/li&gt;'''</span></span><br><span class="line">html=etree.parse(text,etrcc.HTMLparser())</span><br><span class="line">result = html.xpath(<span class="string">'//li[contains(@class "li")]/a/text()'</span>)</span><br></pre></td></tr></tbody></table></figure>
@@ -244,7 +244,7 @@
 <li><strong>多属性匹配</strong>，用多个属性确定一个点，运算符之间用 <code>and</code> 连接</li>
 </ul>
 <figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"li li-first"</span> <span class="attr">name</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"link.html"</span>&gt;</span>first item<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">result=html.xpath('//li[contains(@class "li") and @name="item"]/a/text()')</span><br></pre></td></tr></tbody></table></figure>
-<p>除了 <code>and</code> 之外，XPath 还有其他的运算符：<img src="/.club//image-20230508165838714.png" alt="image-20230508165838714"></p>
+<p>除了 <code>and</code> 之外，XPath 还有其他的运算符：<img src="image-20230508165838714.png" alt="image-20230508165838714"></p>
 <ul>
 <li><strong>按序选择：</strong> 往中括号中传入值来选取</li>
 </ul>
@@ -252,7 +252,7 @@
 <hr>
 <p><strong><em>Beautiful Soup:</em></strong></p>
 <ul>
-<li><p><code>beautufil soup</code> 依赖解析器,通常有 <code>html.parser</code>    <code>lxml</code>    <code>xml</code>   <code>html5lib</code>  这四种, 不过比较推荐使用 <strong><em>lxml</em></strong> <img src="/.club//image-20230508165854714.png" alt="image-20230508165854714"></p>
+<li><p><code>beautufil soup</code> 依赖解析器,通常有 <code>html.parser</code>    <code>lxml</code>    <code>xml</code>   <code>html5lib</code>  这四种, 不过比较推荐使用 <strong><em>lxml</em></strong> <img src="image-20230508165854714.png" alt="image-20230508165854714"></p>
 </li>
 <li><p><code>soup.prettify()</code> 把要解析的字符串以标准的缩进格式输出.</p>
 </li>
@@ -274,7 +274,7 @@
 </ul>
 </li>
 <li><code>find</code> 同 <code>find_all</code> 不过进返回第一个匹配到的元素.</li>
-<li>其他的方法:  <img src="/.club//image-20230508165915758.png" alt="image-20230508165915758"></li>
+<li>其他的方法:  <img src="image-20230508165915758.png" alt="image-20230508165915758"></li>
 </ul>
 </li>
 <li><strong>CSS选择器:</strong> 调用 <code>select</code> 方法,传入相应的 CSS选择器即可. <code>soup.select('ul li')</code></li>
@@ -309,9 +309,9 @@
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">db = pymysql.connect(host=<span class="string">'121.4.79.246'</span>,user=<span class="string">'root'</span>,password=<span class="string">'Shadow99!'</span>,port=<span class="number">3306</span>,db=<span class="string">'db_python'</span>)  </span><br><span class="line"><span class="comment"># 标准的更新数据方法  </span></span><br><span class="line">data={  </span><br><span class="line">    <span class="string">'id'</span>:<span class="string">'2021214094'</span>,  </span><br><span class="line">    <span class="string">'name'</span>:<span class="string">'张伟'</span>,  </span><br><span class="line">    <span class="string">'age'</span>:<span class="number">24</span>  </span><br><span class="line">}  </span><br><span class="line">table=<span class="string">'student'</span>  </span><br><span class="line">keys=<span class="string">','</span>.join(data.keys())  </span><br><span class="line">values=<span class="string">','</span>.join([<span class="string">'%s'</span>]*<span class="built_in">len</span>(data))  </span><br><span class="line">  </span><br><span class="line">cursor=db.cursor()  </span><br><span class="line">sql = <span class="string">'INSERT INTO {table}({keys}) values({values}) ON DUPLICATE KEY UPDATE '</span>.<span class="built_in">format</span>(table=table,keys=keys,values=values)  </span><br><span class="line">update=<span class="string">','</span>.join([<span class="string">"{key}=%s"</span>.<span class="built_in">format</span>(key=key) <span class="keyword">for</span> key <span class="keyword">in</span> data])  </span><br><span class="line">sql += update  </span><br><span class="line"><span class="keyword">try</span>:  </span><br><span class="line">    <span class="keyword">if</span> cursor.execute(sql,<span class="built_in">tuple</span>(data.values())*<span class="number">2</span>):  </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'Successful'</span>)  </span><br><span class="line">        db.commit()  </span><br><span class="line"><span class="keyword">except</span>:  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Failed'</span>)  </span><br><span class="line">    db.rollback()  </span><br><span class="line">db.close()</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <hr>
-<p><strong><em>MongoDB:</em></strong><br>比较符号：<img src="/.club//image-20230508170029989.png" alt="image-20230508170029989"></p>
+<p><strong><em>MongoDB:</em></strong><br>比较符号：<img src="image-20230508170029989.png" alt="image-20230508170029989"></p>
 <p>适用写法： <code>collection.find({'age':{'$gt':20}})</code> </p>
-<p>或者正则匹配查询：<img src="/.club//image-20230508170039776.png" alt="image-20230508170039776"></p>
+<p>或者正则匹配查询：<img src="image-20230508170039776.png" alt="image-20230508170039776"></p>
 <p>操作方法：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line">client = pymongo.MongoClient(host=<span class="string">'localhost'</span>,port=<span class="number">27017</span>)</span><br><span class="line">db=client.test <span class="comment"># 指定数据库</span></span><br><span class="line">collection=db.student  <span class="comment"># 指定集合</span></span><br></pre></td></tr></tbody></table></figure>
 <hr>
@@ -319,7 +319,7 @@
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> redis <span class="keyword">import</span> StrictRedis</span><br><span class="line">redis=StrictRedis(host=<span class="string">'localhost'</span>,port=<span class="number">6379</span>,db=<span class="number">0</span>,password=<span class="string">'Shadow99!'</span>)</span><br><span class="line">reids.<span class="built_in">set</span>(<span class="string">'name'</span>,<span class="string">'Bob'</span>)</span><br><span class="line"><span class="built_in">print</span>(redis.get(<span class="string">'name'</span>))</span><br></pre></td></tr></tbody></table></figure>
 <p>主要就是熟悉各种操作：键操作、字符串操作、列表操作、集合操作、有序集合操作、散列操作。</p>
 <hr>
-<p><strong><em>Elasticsearch搜索引擎存储：</em></strong> $P_{159}$<br>Elasticsearch 和传统关系型数据库的对比：<img src="/.club//image-20230508170100208.png" alt="image-20230508170100208"></p>
+<p><strong><em>Elasticsearch搜索引擎存储：</em></strong> $P_{159}$<br>Elasticsearch 和传统关系型数据库的对比：<img src="image-20230508170100208.png" alt="image-20230508170100208"></p>
 <p>没装好。。。。运行不通。。后面再试吧</p>
 <hr>
 <p><strong><em>RabbitMQ的使用：</em></strong> $P_{166}$<br>在爬取数据的过程中，实现进程之间的通信。 它是一个开源的消息队列系统。</p>
@@ -329,7 +329,7 @@
 <p><strong>并发限制：</strong></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 并发限制  </span></span><br><span class="line"><span class="keyword">import</span> asyncio  </span><br><span class="line"><span class="keyword">import</span> aiohttp  </span><br><span class="line">  </span><br><span class="line">CONCURRENCY = <span class="number">5</span>  </span><br><span class="line">URL=<span class="string">'https://www.baidu.com'</span>  </span><br><span class="line">  </span><br><span class="line">semaphone = asyncio.Semaphore(CONCURRENCY)  </span><br><span class="line">session=<span class="literal">None</span>  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">scrape_api</span>():  </span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> semaphone:  </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Scraping "</span>,URL)  </span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(URL) <span class="keyword">as</span> response:  </span><br><span class="line">            <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">await</span> response.text()  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():  </span><br><span class="line">    <span class="keyword">global</span> session  </span><br><span class="line">    session=aiohttp.ClientSession()  </span><br><span class="line">    scrape_index_tasks = [asyncio.ensure_future(scrape_api()) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>)]  </span><br><span class="line">    <span class="keyword">await</span> asyncio.gather(*scrape_index_tasks)  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:  </span><br><span class="line">    asyncio.get_event_loop().run_until_complete(main())</span><br></pre></td></tr></tbody></table></figure>
 <hr>
-<h2 id="第7章-自动化软件"><a href="#第7章-自动化软件" class="headerlink" title="第7章 自动化软件"></a>第7章 自动化软件</h2><p><strong><em>Selenium:</em></strong><br>当使用 <code>wait.until(EC.***)</code>时的判断条件<img src="/.club//image-20230508170125607.png" alt="image-20230508170125607"></p>
+<h2 id="第7章-自动化软件"><a href="#第7章-自动化软件" class="headerlink" title="第7章 自动化软件"></a>第7章 自动化软件</h2><p><strong><em>Selenium:</em></strong><br>当使用 <code>wait.until(EC.***)</code>时的判断条件<img src="image-20230508170125607.png" alt="image-20230508170125607"></p>
 <p>如 <code>wait.until(EC.title_is())</code></p>
 <hr>
 <p><strong><em>Splash：</em></strong></p>
