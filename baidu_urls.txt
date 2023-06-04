@@ -1,3 +1,4 @@
+https://www.zl21.club/2023/06/04/%E6%90%AD%E5%BB%BAsamab%E6%9C%8D%E5%8A%A1%E5%99%A8/
 https://www.zl21.club/2023/02/12/Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5/
 https://www.zl21.club/2023/02/10/Nas%E5%AE%9E%E8%B7%B5/
 https://www.zl21.club/2023/01/13/WSL%E5%AE%9E%E8%B7%B5/
@@ -7,4 +8,3 @@ https://www.zl21.club/2022/12/20/Nacos%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/
 https://www.zl21.club/2022/12/20/Nacos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/
 https://www.zl21.club/2022/12/20/RabbitMQ%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/
 https://www.zl21.club/2022/11/20/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/
-https://www.zl21.club/2022/11/20/SpringBoot%E9%80%9F%E9%80%9A/
